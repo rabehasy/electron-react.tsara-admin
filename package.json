@@ -1,5 +1,6 @@
 {
-  "name": "electron-react-app",
+  "name": "tsara-admin",
+  "description": "Madatsara Admin desktop application",
   "version": "0.1.0",
   "private": true,
   "homepage": "./",
@@ -11,7 +12,11 @@
     "react:test": "react-scripts test",
     "react:eject": "react-scripts eject",
     "electron": "electron .",
-    "electron:start": "node ./electron-wait-react"
+    "electron:start": "node ./electron-wait-react",
+    "debian:installer": "npx electron-installer-debian --src dist/tsara-admin-linux-x64/ --dest dist/installers/ --arch amd64",
+    "windows:installer": "npx electron-installer-windows --src dist/tsara-admin-win32-x64/ --dest dist/installers/",
+    "macos:installer": "npx electron-installer-dmg dist/tsara-admin-osx/tsara-admin.app --out=dist/installers/osx",
+    "build": "react-scripts build && npx electron-packager . --no-prune --ignore=/node_modules --ignore=/e2e --overwrite --ignore=/src --ignore=/public --out dist/"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -29,8 +34,7 @@
   },
   "devDependencies": {
     "electron": "^17.1.2",
-    "electron-devtools-installer": "^3.2.0",
-    "electron-packager": "^15.4.0"
+    "electron-devtools-installer": "^3.2.0"
   },
   "eslintConfig": {
     "extends": [
